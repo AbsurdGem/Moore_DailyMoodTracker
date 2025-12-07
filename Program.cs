@@ -1,54 +1,56 @@
-﻿using System;
-using DailyLogApp.Models;
-
-namespace DailyLogApp
+﻿class Program
 {
-    class Program
+    static void Main(string[] args)
     {
-        static void Main()
+        Console.WriteLine("Morgan's Sassy Mood Tracker - Week 4 Database Edition");
+
+        DatabaseManager db = new DatabaseManager();
+
+        bool running = true;
+
+        while (running)
         {
-            Console.WriteLine("Morgan’s Mood Log - Week 3 Class Demo\n");
+            Console.WriteLine("\nChoose an option:");
+            Console.WriteLine("1 - Add Log");
+            Console.WriteLine("2 - View Logs");
+            Console.WriteLine("3 - Update Log Notes");
+            Console.WriteLine("4 - Delete Log");
+            Console.WriteLine("5 - Exit");
 
-            // Polymorphism demo
-            Mood mood = GetMoodFromUser();
+            string choice = Console.ReadLine();
 
-            HabitDetails habits = new HabitDetails(
-                sleep: 7,
-                exercise: 20,
-                water: 60
-            );
-
-            DailyLog log = new DailyLog(
-                id: 1,
-                date: DateTime.Now,
-                mood: mood,
-                habits: habits,
-                notes: "Today was chaotic but fun."
-            );
-
-            Console.WriteLine(log.ToString());
-
-            Console.WriteLine("\nRecommendation:");
-            Console.WriteLine(log.ApplyRecommendation());
-
-            Console.WriteLine("\nYour Random Challenge:");
-            Console.WriteLine(log.AssignRandomChallenge());
-        }
-
-        static Mood GetMoodFromUser()
-        {
-            Console.WriteLine("How are you feeling today?");
-            Console.WriteLine("1 = Happy");
-            Console.WriteLine("2 = Grumpy");
-
-            string input = Console.ReadLine();
-
-            return input switch
+            switch (choice)
             {
-                "1" => new HappyMood(),
-                "2" => new GrumpyMood(),
-                _ => new HappyMood()
-            };
+                case "1":
+                    var newLog = CreateNewLog();
+                    db.InsertLog(newLog);
+                    Console.WriteLine("✨ Log added! You’re doing amazing sweetie.");
+                    break;
+
+                case "2":
+                    var logs = db.GetAllLogs();
+                    foreach (var log in logs)
+                        Console.WriteLine(log.ToString());
+                    break;
+
+                case "3":
+                    Console.Write("Enter log ID to update: ");
+                    int idU = int.Parse(Console.ReadLine());
+                    Console.Write("Enter new notes: ");
+                    string notes = Console.ReadLine();
+                    db.UpdateNotes(idU, notes);
+                    break;
+
+                case "4":
+                    Console.Write("Enter log ID to delete: ");
+                    int idD = int.Parse(Console.ReadLine());
+                    db.DeleteLog(idD);
+                    break;
+
+                case "5":
+                    running = false;
+                    break;
+            }
         }
     }
 }
