@@ -1,69 +1,76 @@
-"# Moore_DailyMoodTracker" 
-# Daily Mood & Habit Tracker  
-### SDC320 Course Project – Phase 1 (Class Implementation)  
-**Developer:** Morgan Moore  
+# Daily Mood & Habit Tracker
+**Repository Name:** DailyMoodHabitTracker
+
+A personality-driven, slightly sarcastic C# console application that allows users to log daily moods, habits, and notes while receiving personalized recommendations and randomized challenges.
+
+This project was developed as a final course project to demonstrate Object-Oriented Programming (OOP) concepts and SQLite database integration in C#.
 
 ---
 
-## 📌 Project Overview
-Daily Mood & Habit Tracker is a C# terminal-based application designed to log the user’s mood, daily habits, and personalized sassy recommendations.  
-This project demonstrates object-oriented programming concepts including:
-
-- Interfaces  
-- Abstract classes  
-- Polymorphism  
-- Composition  
-- Constructors & access specifiers  
-- Data modeling for future SQLite CRUD operations (Week 4)
+## ✨ Features
+- Terminal-based user input and output
+- Daily mood and habit tracking
+- Personalized, sassy recommendations
+- Random daily challenges
+- SQLite database with full CRUD operations
+- Clean object-oriented architecture
 
 ---
 
-## 🧱 Phase 1 Deliverables (Week 3)
-This submission includes **full class implementation** based on the design document:
-
-### ✔ Implemented Classes
-- `DailyLog`  
-- `HabitDetails` (Composition class)  
-- `Mood` (Abstract base class)  
-- `SassyMood` (Derived class)  
-- `IRecommendation` (Interface)  
-- `SassyRecommendation` (Implementation class)  
-- `IDailyChallenge` (Interface)  
-- `RandomChallenge` (Implements IDailyChallenge)  
-
-### ✔ OOP Concepts Demonstrated
-- **Abstract class:** `Mood`
-- **Polymorphism:** Mood → SassyMood; Recommendation engine
-- **Interface usage:** `IRecommendation`, `IDailyChallenge`
-- **Composition:** DailyLog → HabitDetails
-- **Constructor overloading**
-- **Access specifiers:** Proper use of `private`, `public`, `protected`
-- **Formatted output:** All classes override `ToString()`
-
-Database interactions will be added in **Week 4**.
+## 🧠 OOP Concepts Demonstrated
+- **Inheritance** (Mood hierarchy)
+- **Abstract Classes** (Mood base class)
+- **Interfaces** (Recommendation and Challenge behaviors)
+- **Polymorphism** (Dynamic mood and recommendation handling)
+- **Composition** (DailyLog contains HabitDetails)
+- **Constructors & Access Specifiers**
 
 ---
 
-## 🗂 Project Structure
-/DailyMoodTracker
-├── Program.cs
-├── DailyLog.cs
-├── Mood.cs
-├── SassyMood.cs
-├── HabitDetails.cs
-├── IRecommendation.cs
-├── SassyRecommendation.cs
-├── IDailyChallenge.cs
-├── RandomChallenge.cs
-├── README.md
-└── (SQLite integration coming in Week 4)
+## 🗄 Database Design
+**SQLite Database: `database.db`**
 
+**Table: DailyLogs**
+| Field | Type | Description |
+|------|------|------------|
+| EntryID | INTEGER PK AUTOINCREMENT | Unique entry ID |
+| EntryDate | TEXT | Date of log |
+| Mood | TEXT | User mood |
+| SleepHours | INTEGER | Hours slept |
+| ExerciseMinutes | INTEGER | Exercise duration |
+| WaterIntakeOz | INTEGER | Water intake |
+| Notes | TEXT | Optional notes |
+
+CRUD operations are handled through the `DatabaseManager` class.
 
 ---
 
 ## 🚀 How to Run
-From a terminal inside the project directory:
+1. Open the project in Visual Studio Code
+2. Ensure `System.Data.SQLite` is installed
+3. Build the project
+4. Run from the terminal
+5. Database initializes automatically
 
-```bash
-dotnet build
-dotnet run
+---
+
+## 🏷 GitHub Release Tags
+- **Phase #1** — Class Implementation
+- **Phase #2** — Database Integration
+- **Phase #3** — Final Submission
+
+---
+
+## 📌 Project Summary
+
+This project demonstrates my ability to design and implement a complete C# console application using object-oriented principles and persistent data storage. The application was built incrementally, beginning with proposal and design, followed by class implementation and database integration.
+
+Throughout development, I focused on clean architecture, readability, and meeting all core project requirements. A personalized and humorous tone was intentionally added to make the application engaging while still maintaining professional code standards.
+
+This project reflects my growing confidence in C#, OOP design, and working with SQLite databases, and it represents a strong foundation for future software development projects.
+
+---
+
+## 👑 Author
+**Morgan Moore**
+> Note: A video demonstration was not included for this submission.
